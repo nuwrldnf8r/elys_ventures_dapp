@@ -4,11 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'elysgreen': '#083425',
-        'elysgold': '#6d6f42',
-        'buttongreen': '#031a15',
+        'elysgreen': '#0F503C',//'#083425',
+        'elysgold': '#6d6f42', //'#AE8D4A'
+        'buttongreen': '#053527', //#031a15',
         'buttongreen-100': '#0a2f27',
-        'bggreen': '#e3eee8',
+        'bggreen': '#8DC7BA',//'#e3eee8',
         'bordergold': '#1a4934'
       },
       spacing: {
