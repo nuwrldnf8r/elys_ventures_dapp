@@ -1,0 +1,28 @@
+{
+    "name": "TOAReceipt",
+    "description": "TOA Crowdsale Token",
+    "image": "http://localhost:8888/metadata/crowdsale.png",
+    "attributes": [
+      {
+        "trait_type":"Product", "value": "Mesembryanthemum Tortuosum"
+      },
+      {
+        "trait_type":"Volume", "value": "10kg"
+      },
+      {
+        "trait_type":"Total Alkaloids", "value": "0.9%"
+      },
+      {
+        "trait_type":"Max Moisture", "value": "12%"
+      },
+      {
+        "trait_type":"Cut", "value": "Tea Cut or Milled"
+      },
+      {
+        "trait_type":"First Offtake", "value": "1 Dec 2024"
+      },
+      {
+        "trait_type":"Delivery Date", "value": "1 Dec (Annually)"
+      }
+    ]
+  }
