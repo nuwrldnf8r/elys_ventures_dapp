@@ -113,6 +113,7 @@ exports.handler = async (event, context) => {
             let actor = await createActor()
             console.log(actor)
             let address = params.address
+            console.log('account:', address)
             let ret = await actor.get_from_index(address)
             console.log(ret)
             let b = Buffer.from(ret)
