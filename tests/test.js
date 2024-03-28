@@ -307,9 +307,9 @@ const succesfulCampaign = async () => {
 
 const changeMeta = async () => {
     const contract = new ethers.Contract(addresses.crowdsale, abi.crowdsale, ownerWallet)
-    let tx = await contract.updateCrowdsaleTokenMetadata('http://localhost:3000/metadata/crowdsale_token_metadata.json')
+    let tx = await contract.updateCrowdsaleTokenMetadata('http://localhost:8888/metadata/crowdsale_token_metadata.json')
     await confirm(tx.hash)
-    tx = await contract.updateTOAMetadata('http://localhost:3000/metadata/toa_metadata.json')
+    tx = await contract.updateTOAMetadata('http://localhost:8888/metadata/toa_metadata.json')
     await confirm(tx.hash)
     //http://localhost:3000/metadata/crowdsale_token_metadata.json
 }
@@ -322,8 +322,8 @@ const status = async () => {
 
 const run = async () => {
     await getAddresses()
-    let _status = await status()
-    console.log(_status)
+    //let _status = await status()
+    //console.log(_status)
 
     /*
     //await deployUSDC()
@@ -338,12 +338,12 @@ const run = async () => {
     */
     //await succesfulCampaign()
 
-    /*
-    await deployCrowdsale()
-    await startCrowdsale()
-
+    
+    //await deployCrowdsale()
+    //await startCrowdsale()
+    
     await changeMeta()
-    */
+    
    
 }
 

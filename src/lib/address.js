@@ -25,6 +25,6 @@ export const getAddress = async (web3address) => {
         const ret = await axios.get(`${endpoint}/address?address=${hashAddress(web3address)}`)
         return ret.data
     } catch(e) {
-        return {error: e.message}
+        return {}
     }
 }

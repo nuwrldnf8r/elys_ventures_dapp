@@ -1,6 +1,5 @@
 const { Actor, HttpAgent } = require('@dfinity/agent')
 const {Secp256k1KeyIdentity} = require('@dfinity/identity-secp256k1')
-const bip39 = require('bip39')
 const ec = require('elliptic').ec
 const crypto = require('crypto')
 
@@ -47,6 +46,8 @@ const host =  'https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=gtqvw-rqaaa-a
 
 const getKeyPair = () => {
   const secret = process.env.SECRET
+  console.log('secret:',secret)
+  console.log('salt:', process.env.IDENTITY_SALT)
   const privateKeyBuffer = crypto.createHmac('sha256', process.env.IDENTITY_SALT)
     .update(secret)
     .digest()
@@ -62,7 +63,7 @@ const getKeyPair = () => {
 const getIdentity = async () => {
   //const kp = getKeyPair()
   const mnemonic = process.env.SECRET //bip39.entropyToMnemonic(kp.privateKeyHex)
-  console.log(mnemonic)
+  console.log('secret: ',mnemonic)
   return await Secp256k1KeyIdentity.fromSeedPhrase(mnemonic)
 }
 
@@ -126,5 +127,4 @@ exports.handler = async (event, context) => {
         }
     }
     
-    return { statusCode: 200, body: JSON.stringify({success: true}) }
 }

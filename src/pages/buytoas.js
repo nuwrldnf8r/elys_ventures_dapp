@@ -129,7 +129,7 @@ const BuyTOAs = (props) => {
             )}
 
             {progressStage===1 && (
-                <div className="w-full text-center max-w-lg bg-white  opacity-90 border-bordergold border shadow rounded-lg p-5 mx-auto mt-5  font-kallisto-bold">
+                <div className="w-full text-center max-w-lg bg-white  opacity-90 border-bordergold border shadow rounded-lg p-5 mx-auto mt-5  font-kallisto-bold relative">
                     <button onClick={back} className="absolute top-2 left-2"><BackIcon/> Back</button>
                     <h2 class="text-lg font-semibold text-gray-900 mb-2">{props.address?'Update Address':'Set Address'}</h2>
                     <input onChange={(e)=>setAddressField('fullName',e.target.value)} type="text" id="fullName" aria-describedby="Full name" className={`font-normal mx-auto bg-gray-50 border border-gray-300 ${numAllowed(numTOAs)?'text-gray-900':'text-red-900'} text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `} placeholder="Full Name" value={address.fullName}/>
@@ -146,7 +146,7 @@ const BuyTOAs = (props) => {
             )}
 
             {progressStage===2 && (
-                <div class="w-full text-center max-w-lg bg-white opacity-90 border-bordergold border shadow rounded-lg p-5 mx-auto mt-5  font-kallisto-bold">
+                <div class="w-full text-center max-w-lg bg-white opacity-90 border-bordergold border shadow rounded-lg p-5 mx-auto mt-5  font-kallisto-bold relative">
                     <button onClick={back} className="absolute top-2 left-2"><BackIcon/> Back</button>
                     <h2 class="text-lg font-semibold text-gray-900 mb-2">Purchase TOA</h2>
                     <p className="font-normal text-sm m-3">You are about to purchase {numTOAs} TOA{numTOAs>1?'s':''} for {formatUSDC(props.crowdsaleStatus.priceOfTOAs*numTOAs)} USDC</p>

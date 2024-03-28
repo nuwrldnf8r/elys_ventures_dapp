@@ -6,7 +6,7 @@ import {useState, useEffect, useCallback, useRef} from 'react'
 import {saveAddress, getAddress} from './lib/address'
 import Button from './components/button'
 import BuyTOAs from './pages/buytoas'
-import Wallet from './pages/wallet'
+import Dashboard from './pages/dashboard'
 import Crowdsales from './pages/crowdsales'
 import Main from './pages/main'
 import Test from './pages/test'
@@ -35,6 +35,7 @@ const Header = (props) => {
             <button className="text-white  ml-10 font-kallisto-bold text-xs" onClick={()=>props.setPage('crowdsales')}>Crowdsales</button>
             {props.active && 
             <>
+              <button className="text-white  ml-10 font-kallisto-bold text-xs" onClick={()=>props.setPage('dashboard')}>Dashboard</button>
               <button className="text-white  ml-10 font-kallisto-bold text-xs" onClick={()=>props.setPage('buytoas')}>Buy TOAs</button>
               {props.chainId === 0xa869 && 
                 <button className="text-white ml-10 font-kallisto-bold italic text-xs"  onClick={()=>props.setPage('test')}>Test</button>
@@ -71,8 +72,8 @@ const Menu = (props) => {
     <div className="absolute right-32 top-neg-5 bg-elysgreen border-bordergold border p-2 shadow rounded-b-md w-44 z-50 text-center" onMouseEnter={()=>props.userMenu(true)} onMouseLeave={()=>props.userMenu(false)}>
         <MenuItem onClick={()=>{
           props.userMenu(false)
-          props.setPage('wallet')
-        }}>Wallet</MenuItem>
+          props.setPage('dashboard')
+        }}>Dashboard</MenuItem>
         <MenuItem onClick={()=>{
           props.userMenu(false)
           props.setPage('updateaddress')
@@ -189,7 +190,7 @@ function App() {
         
 
         {page==='buytoas' && <BuyTOAs account={account} library={library} address={address} chainId={chainId} setUsdcBalance={setUsdcBalance} usdcBalance={usdcBalance} updateCrowdsaleStatus={updateCrowdsaleStatus} crowdsaleStatus={crowdsaleStatus} updateAddress={updateAddress} back={()=>setPage('main')} setPage={setPage} setTokensChanged={setTokensChanged} loadUSDC={loadUSDC}/>}
-        {page==='wallet' && <Wallet account={account} library={library} address={address} chainId={chainId} loadingTokens={loadingTokens.current} tokens={tokens} usdcBalance={usdcBalance} crowdsaleStatus={crowdsaleStatus} back={()=>setPage('main')} setPage={setPage} setTokensChanged={setTokensChanged} loadUSDC={loadUSDC}/>}
+        {page==='dashboard' && <Dashboard account={account} library={library} address={address} chainId={chainId} loadingTokens={loadingTokens.current} tokens={tokens} usdcBalance={usdcBalance} crowdsaleStatus={crowdsaleStatus} back={()=>setPage('main')} setPage={setPage} setTokensChanged={setTokensChanged} loadUSDC={loadUSDC}/>}
         {page==='updateaddress' && <UpdateAddress updateAddress={updateAddress} address={address} setPage={setPage}/>}
         {page==='crowdsales' && <Crowdsales crowdsaleStatus={crowdsaleStatus} updatingStatus={updatingStatus}/>}
         {page==='main' && (

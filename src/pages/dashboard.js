@@ -37,7 +37,7 @@ const TokenCard = (props) => {
     )
 }
 
-const Wallet = (props) => {
+const Dashboard = (props) => {
     const [showStatus, setShowStatus] = useState(false)
     const [current, setCurrent] = useState(0)
     const [error, setError] = useState(null)
@@ -180,4 +180,4 @@ const Wallet = (props) => {
     )
 }
 
-export default Wallet
+export default Dashboard
