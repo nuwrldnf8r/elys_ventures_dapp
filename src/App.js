@@ -70,6 +70,7 @@ const MenuItem = (props) => {
 const Menu = (props) => {
   return (
     <div className="absolute right-32 top-neg-5 bg-elysgreen border-bordergold border p-2 shadow rounded-b-md w-44 z-50 text-center" onMouseEnter={()=>props.userMenu(true)} onMouseLeave={()=>props.userMenu(false)}>
+        <div className=" text-white text-xs italic opacity-50 mb-3">{props.account.substring(0,7) + '......' + props.account.substring(props.account.length-7)}</div>
         <MenuItem onClick={()=>{
           props.userMenu(false)
           props.setPage('dashboard')
