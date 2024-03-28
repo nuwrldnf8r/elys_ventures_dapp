@@ -1,7 +1,7 @@
 {
     "name": "TOAReceipt",
     "description": "TOA Crowdsale Token",
-    "image": "http://localhost:8888/metadata/crowdsale.png",
+    "image": "https://elysventures.netlify.app/metadata/crowdsale.png",
     "attributes": [
       {
         "trait_type":"Product", "value": "Mesembryanthemum Tortuosum"

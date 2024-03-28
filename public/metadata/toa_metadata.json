@@ -1,7 +1,7 @@
 {
     "name": "TOA",
     "description": "Tokenized Offtake Agreement",
-    "image": "http://localhost:8888/metadata/toa.png",
+    "image": "https://elysventures.netlify.app/metadata/toa.png",
     "attributes": [
       {
         "trait_type":"Product", "value": "Mesembryanthemum Tortuosum"

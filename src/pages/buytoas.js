@@ -84,7 +84,7 @@ const BuyTOAs = (props) => {
             setCurrent(2)
             setTimeout(()=>setShowStatus(false),1000)
             props.setTokensChanged(true)
-            props.setPage('wallet')
+            props.setPage('dashboard')
             console.log('done')
         } catch (e){
             setError('Oops - Something went wrong :(')
