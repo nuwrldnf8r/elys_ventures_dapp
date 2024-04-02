@@ -32,7 +32,7 @@ const Status = (props) => {
 
     if(props.current>props.stages.length-1){
         if(props.error){
-
+            ar.push(<p key={props.stages.length} className="leading-relaxed text-red-500 font-normal text-sm">Something went wrong {':('}</p>)
         } else {
             ar.push(<p key={props.stages.length} className="leading-relaxed text-green-500 dark:text-green-400 font-normal text-sm">Success!</p>)
         }

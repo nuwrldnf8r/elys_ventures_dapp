@@ -2,6 +2,7 @@
 import { InjectedConnector } from "@web3-react/injected-connector"
 import {useWeb3React } from "@web3-react/core"
 import networks from './lib/networks'
+import {ethers} from 'ethers'
 import {useState, useEffect, useCallback, useRef} from 'react'
 import {saveAddress, getAddress} from './lib/address'
 import Button from './components/button'
@@ -20,6 +21,42 @@ import logo from './images/logo.png'
 const Injected = new InjectedConnector({
   supportedChainIDs: [networks.fuji.id, networks.avax.id]
 })
+
+const setNetwork = async (chainId) => {
+  try {
+      await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: ethers.utils.hexValue(chainId) }]
+      });
+      
+  } catch (err) {
+          // This error code indicates that the chain has not been added to MetaMask
+          if (err.code === 4902) {
+              try{
+                 
+                  await window.ethereum.request({
+                      method: 'wallet_addEthereumChain',
+                      params: [
+                          {
+                          chainName: 'Fuji',
+                          chainId: ethers.utils.hexValue(chainId),
+                          nativeCurrency: { name: 'Fuji', decimals: 18, symbol: 'AVAX' },
+                          rpcUrls: [networks.fuji.rpc]
+                          }
+                      ]
+                  });
+
+              } catch(e){
+                  
+              }
+              
+          } else {
+             
+          }
+  }
+}
+
+
 
 const Header = (props) => {
   //<div className="mr-5 inline-block text-sm">{props.account.substring(0,8)+'...'+props.account.substring(props.account.length-8)}</div>
@@ -50,15 +87,27 @@ const Header = (props) => {
           <div className="mr-5 inline-block text-white hover:text-gray-300 cursor-pointer" onMouseEnter={()=>props.userMenu(true)} onMouseLeave={()=>props.userMenu(false)}><User /></div>
           
         }
-        <Button onClick={()=>{
-        if(props.onConnect)props.onConnect(!props.active)
-        if(!props.active){
-          props.activate(Injected)
-        } else {
-          props.deactivate()
-        }
-        
-      }}>{props.active?'Disconnect':'Connect'}</Button></div>
+        <Button onClick={async ()=>{
+          
+          if(!props.active){
+              try{
+              await props.activate(Injected)
+              
+              //for test
+              if (Injected.chainId!==0xa869){
+                await setNetwork(0xa869)
+
+              } else {
+                if(props.onConnect)props.onConnect(!props.active)
+              }
+              
+              } catch(e){
+                console.log(e)
+              }
+            }
+            
+          
+        }}>{props.active?'Disconnect':'Connect'}</Button></div>
     </div>
   )
 }
@@ -135,7 +184,7 @@ function App() {
   },[account, chainId, loadingTokens])
     
   useEffect(()=>{
-    if(active && connecting){
+    if(active && connecting && chainId===0xa869){
       console.log('here',Date.now())
       getAddress(account).then(address=>{
         if(!address.error) {
@@ -155,11 +204,11 @@ function App() {
   },[active, connecting, page, account, crowdsaleStatus, chainId, updateCrowdsaleStatus, getTokens])
 
   useEffect(()=>{
-    if(tokensChanged && active){
+    if(tokensChanged && active && chainId===0xa869){
       setTokensChanged(false)
       getTokens().then(()=>{console.log(tokens)})
     }
-  },[setPage,page,getTokens,loadingTokens,tokens, tokensChanged, active])
+  },[setPage,page,getTokens,loadingTokens,tokens, tokensChanged, active, chainId])
 
   useEffect(()=>{
     if(!crowdsaleStatus.campaignLength){

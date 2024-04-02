@@ -118,7 +118,7 @@ const BuyTOAs = (props) => {
                     <div className="mt-3 font-normal text-xs">
                         Total: {formatUSDC(props.crowdsaleStatus.priceOfTOAs*numTOAs)} USDC <div className="inline-block text-xs text-italic text-slate-500">({numTOAs} x {formatUSDC(props.crowdsaleStatus.priceOfTOAs)} USDC)</div>
                     </div>
-                    <div className="mt-2  text-xs">
+                    <div className={(props.usdcBalance - props.crowdsaleStatus.priceOfTOAs*numTOAs>=0)?"mt-2 text-xs":"mt-2 text-xs text-red-500"}>
                         Balance: {formatUSDC(props.usdcBalance - props.crowdsaleStatus.priceOfTOAs*numTOAs)} USDC 
                     </div>
                     <div className="max-w-sm mx-auto mt-5 text-center"><Button onClick={next} disabled={!numAllowed(numTOAs)}>Next <NextIcon/></Button></div>

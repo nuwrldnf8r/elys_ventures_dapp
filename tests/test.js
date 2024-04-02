@@ -340,9 +340,9 @@ const run = async () => {
 
     
     //await deployCrowdsale()
-    //await startCrowdsale()
+    await startCrowdsale()
     
-    await changeMeta()
+    //await changeMeta()
     
    
 }
